@@ -11,13 +11,11 @@ const Department = require('../department.model.js');
      dep.validateSync(err => {
        expect(err.errors.name).to.exist;
      });
-     after(() => {
-       mongoose.models = {};
-     });
    });
    it('should throw an error if "name" is not a string', () => {
 
-     const cases = ['Management', 'Human Resources'];
+     const cases = [{}, []];
+  
      for (let name of cases) {
        const dep = new Department({ name });
 
@@ -25,9 +23,6 @@ const Department = require('../department.model.js');
          expect(err.errors.name).to.exist;
        });
      }
-     after(() => {
-       mongoose.models = {};
-     });
    });
 
 
@@ -42,14 +37,11 @@ const Department = require('../department.model.js');
          expect(err.errors.name).to.exist;
        });
      }
-     after(() => {
-       mongoose.models = {};
-     });
    });
 
    it('should not throw an error if "name" is okay', () => {
 
-     const cases = [{}, []];
+     const cases = ['Management', 'Human Resources'];
      for (let name of cases) {
        const dep = new Department({ name });
 
@@ -57,9 +49,5 @@ const Department = require('../department.model.js');
          expect(err).to.not.exist;
        });
      }
-     after(() => {
-       mongoose.models = {};
-     });
    });
-
  });

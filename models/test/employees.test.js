@@ -13,9 +13,6 @@ const Employee = require('../employees.model');
      dep.validateSync(err => {
        expect(err.errors.firstName).to.exist;
      });
-     after(() => {
-       mongoose.models = {};
-     });
    });
 
    it('should throw an error if "firstName" is not a string', () => {
@@ -28,9 +25,6 @@ const Employee = require('../employees.model');
          expect(err.errors.firstName).to.exist;
        });
      }
-     after(() => {
-       mongoose.models = {};
-     });
    });
    it('should not throw an error if "firstName", "lastName" and "department" is okay', () => {
 
@@ -43,10 +37,6 @@ const Employee = require('../employees.model');
 
        dep.validateSync(err => {
          expect(err).to.not.exist;
-       });
-
-       after(() => {
-         mongoose.models = {};
        });
      }
    });
