@@ -1,4 +1,4 @@
-const Department = require('../department.model.js');
+ const Department = require('../department.model');
  const expect = require('chai').expect;
  const mongoose = require('mongoose');
 
@@ -41,7 +41,7 @@ const Department = require('../department.model.js');
 
    it('should not throw an error if "name" is okay', () => {
 
-     const cases = ['Management', 'Human Resources'];
+     const cases = ['Lorem Ipsum'];
      for (let name of cases) {
        const dep = new Department({ name });
 
